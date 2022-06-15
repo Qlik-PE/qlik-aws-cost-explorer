@@ -2,13 +2,13 @@
 
 ## License Summary
 
-This project is made available under a modified MIT license. See the LICENSE file.
+This project is made available under a modified MIT license. See the [LICENSE](LICENSE) file.
 
 ## Disclaimer
 
-1. This is **not** Qlik Supported Project/Product.
+1. This is **not** a Qlik Supported Project/Product.
 2. Contributions such as Issues, Pull Request and additional codes are welcomed.
-3. **Qlik Inc.** or **Qlik Support** has no affiliation with this project. The initial version was developed by Clever Anjos who is currently employed as Principal Solution Architect at Qlik Partner Engineering Team.
+3. **Qlik Inc.** or **Qlik Support** has no affiliation with this project. The initial version was developed by [Clever Anjos](https://www.linkedin.com/in/cleveranjos/) who is currently employed as Principal Solution Architect at Qlik Partner Engineering Team.
 
 ## Purpose
 
