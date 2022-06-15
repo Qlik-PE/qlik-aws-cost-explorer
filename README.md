@@ -51,6 +51,7 @@ We provide one [template](qvf/AWS%20Cost%20Explorer%20-%20github.qvf) to consume
 Some screenshots below (intentionally blurred)
 
 ![image info](./img/dash-1.png)
+![image info](./img/dash-2.png)
 
 ## Prerequisites
 
