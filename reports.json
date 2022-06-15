@@ -1,0 +1,66 @@
+[
+    {
+        "Report": "CostCenter",
+        "GroupBy": [
+            {
+                "Type": "DIMENSION",
+                "Key": "LINKED_ACCOUNT"
+            },
+            {
+                "Type": "TAG",
+                "Key": "Cost Center"
+            }
+        ],
+        "Granularity": "DAILY",
+        "Split": "true",
+        "Metric": "NetAmortizedCost,UnblendedCost"
+    },
+    {
+        "Report": "Owner",
+        "GroupBy": [
+            {
+                "Type": "DIMENSION",
+                "Key": "LINKED_ACCOUNT"
+            },
+            {
+                "Type": "TAG",
+                "Key": "Owner"
+            }
+        ],
+        "Granularity": "DAILY",
+        "Split": "true",
+        "Metric": "NetAmortizedCost,UnblendedCost"
+    },
+    {
+        "Report": "Project",
+        "GroupBy": [
+            {
+                "Type": "DIMENSION",
+                "Key": "LINKED_ACCOUNT"
+            },
+            {
+                "Type": "TAG",
+                "Key": "Project"
+            }
+        ],
+        "Granularity": "DAILY",
+        "Split": "true",
+        "Metric": "NetAmortizedCost,UnblendedCost"
+    },
+    {
+        "Report": "Service",
+        "GroupBy": [
+            {
+                "Type": "DIMENSION",
+                "Key": "LINKED_ACCOUNT"
+            },
+            {
+                "Type": "DIMENSION",
+                "Key": "SERVICE"
+            }
+        ],
+        "Granularity": "DAILY",
+        "Split": "true",
+        "Metric": "NetAmortizedCost,UnblendedCost"
+    }
+]
