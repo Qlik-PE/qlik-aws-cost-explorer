@@ -6,32 +6,64 @@ This project is made available under a modified MIT license. See the LICENSE fil
 
 ## Purpose
 
-The purpose of this script is use the [AWS Cost Explorer API] <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetCostAndUsage.html> GetCostAndUsage endpoint to retrieve cost data about one (or more) AWS accounts.
+The purpose of this script is use the [AWS Cost Explorer API](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetCostAndUsage.html) GetCostAndUsage endpoint to retrieve cost data about one (or more) AWS accounts.
 
 Based on a configuration file, this script will generate csv files that can be ingested by BI tools like Qlik Sense. We provide a qvf that is a template for that data consumption.
 
 ![image info](./img/highlevel.png)
 
-This project was inspired by this [AWS sample]<https://github.com/aws-samples/aws-cost-explorer-report>
+This project was inspired by this [AWS sample](https://github.com/aws-samples/aws-cost-explorer-report)
 
-## Usage Options
+## Usage
+
+### Execution Options
 
 There are several options to run this script.
+
 One option is use this script as a standalone program to be executed in one server or machine with access to a S3 bucket.
-This script may be deployed as a AWS Lambda function. Using this serveless approach is possible because the footprint to execute the script is really tiny (128Mb for small AWS accounts) increasing accordingly to how many records you retrieve from the API. For example, daily detailed extractions consummes more memory than monthly ones.
 
-## Prerequesites
+This script may be deployed as well as a AWS Lambda function. Using this serveless approach is possible because the footprint to execute the script is really tiny (128Mb for small AWS accounts) increasing accordingly to how many records you retrieve from the API. For example, daily detailed extractions consummes more memory than monthly ones.
 
-1. An AWS access key pair for IAM user (<https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html>)
+### Configuration file
+
+After you decide how you are executing this script, you need to configure the file [reports.json](./reports.json). This file contains one array of objects with these parameters:
+
+Most of the parameters relate to [API Parameters](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetCostAndUsage.html)
+
+1. *Report* - This is the report name. You report will be extracted as report.csv
+2. *GroupBy* - One or two (the AWS API only allow up to 2 dimensions)
+3. *Granularity*  - "DAILY"/"MONTHLY"
+4. *Split* - "true" (the script will send one request by day) / "false" (the script will send one request for all dataset)
+5. *Metric* -  "NetAmortizedCost,UnblendedCost"
+
+### Environment variables
+
+You need to set some environment variables before executing this script:
+
+1. *S3_BUCKET* - S3 bucket name used to store the extracted data in a csv format
+2. *MONTHS* - How many months prior to today to extract
+3. *CURRENT_MONTH* - true(only the current month is extracted)/false(*MONTHS* parameter will be used to calculate the dates)
+4. *LAST_MONTH_ONLY* - true(only the last month is extracted)/false(*MONTHS* parameter will be used to calculate the dates)
+
+## Qlik Sense Application
+
+We provide one [template](qvf/AWS%20Cost%20Explorer%20-%20github.qvf) to consume the data extracted by the script. You can import it into your Qlik Sense environment and modify to adjust to your needs.
+Some screenshots below (intentionally blurred)
+
+![image info](./img/dash-1.png)
+
+## Prerequisites
+
+1. An AWS access key pair for [IAM user](<https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html>)
 2. An S3 bucket to store the final csv result. If this is not present, the file will be stored into the TEMP directory
 3. Python 3.10
-4. Pandas 1.4.2 (<https://pandas.pydata.org/pandas-docs/stable/>)
-5. Boto 3 (<https://boto3.amazonaws.com/v1/documentation/api/latest/index.html>)
+4. [Pandas 1.4.2](<https://pandas.pydata.org/pandas-docs/stable/>)
+5. [Boto 3](<https://boto3.amazonaws.com/v1/documentation/api/latest/index.html>)
 
 ## Using Lambda function to execute
 
 One efficient way of executing this script is using AWS Lambda servless archictecture that allows the execution with  a tiny footprint.
-Please refer to [this documentation]<https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html> about how to create a lambda function
+Please refer to [this documentation](https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html) about how to create a lambda function
 
 One important mention is that we are using one layer provided by this project <https://github.com/aws-samples/aws-cost-explorer-report>
 
