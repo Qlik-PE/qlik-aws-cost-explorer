@@ -83,3 +83,10 @@ There are costs involved in data extraction from Cost Explorer API:
   * Usually [Free](https://aws.amazon.com/free/)  
 * Amazon S3
   * Minimal usage
+
+## Versions and Roadmap
+
+* Jun 2022 - Initial version
+* Q3 2022 - AutoML integration (Planned)
+
+Feel free to suggest any improvements. We will evaluate and implement when your suggestion was accepted. Please use the [Feature Request](https://github.com/Qlik-PE/qlik-aws-cost-explorer/issues/new?assignees=&labels=&template=feature_request.md&title=)
