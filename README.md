@@ -1,4 +1,4 @@
-# Qlik AWS Cost Explorer Report Generator
+# Qlik AWS Cost Explorer 
 
 ## License Summary
 
