@@ -49,7 +49,6 @@ You need to set some environment variables before executing this script:
 1. **S3_BUCKET** - S3 bucket name used to store the extracted data in a csv format
 2. ***MONTHS** - How many months prior to today to extract
 3. **CURRENT_MONTH** - true(only the current month is extracted)/false(*MONTHS* parameter will be used to calculate the dates)
-4. **LAST_MONTH_ONLY** - true(only the last month is extracted)/false(*MONTHS* parameter will be used to calculate the dates)
 
 ## Qlik Sense Application
 
