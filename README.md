@@ -20,6 +20,14 @@ Based on a configuration file, this script will generate csv files that can be i
 
 This project was inspired by this [AWS sample](https://github.com/aws-samples/aws-cost-explorer-report)
 
+
+## Configuration
+
+### Defining your dimensions
+Since the AWS Cost API only permits the extraction of two dimensions at same time you need to make some decisions before deploying this project. 
+Define which dimensions pairs you want to collect. For example (Subscription/Service and Service/(Tag - Cost Center). After that you need to configure your reports.json file (check "Configuration file" for more details).
+After that, you need to change your Qlik Sense app to retrieve the data you are extracting.
+
 ## Usage
 
 ### Execution Options
